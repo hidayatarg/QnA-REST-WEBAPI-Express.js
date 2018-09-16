@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,8 @@
   "homepage": "https://gitlab.com/hidayatarg/qna-rest-webapi-express#readme",
   "dependencies": {
     "body-parser": "^1.15.2",
-    "express": "^4.13.4"
+    "express": "^4.13.4",
+    "morgan": "^1.7.0",
+    "nodemon": "^1.18.4"
   }
 }

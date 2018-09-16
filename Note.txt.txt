@@ -159,4 +159,77 @@ app.listen(port,function(){
 });
 ```
 
-Refactor the code
+Using Morgan, we build our Answer routes in app.
+#npm install --save morgan@~1.7
+#npm install -dev --save nodemon
+TEST 1
+Testing the answer -POST
+localhost:3000/questions/6/answers
+
+body raw json
+{
+	"prop":"value",
+	 "clean":"abc"
+}
+POST /questions/6/answers 200 15.664 ms - 92
+Morgon is giving the http result
+
+TEST 2 -PUT
+localhost:3000/questions/6/answers/33
+body raw json
+{
+	"prop":"value",
+	 "clean":"abc"
+}
+
+
+
+{
+  	"response": "You Sent a PUT request for /answers",
+    
+	"questionId": "6",
+    
+	"answerId": "33",
+    
+	"body": {
+        "prop": "value",
+        "clean": "abc"
+    }
+
+}
+
+TEST 3 DELET url to same 
+localhost:3000/questions/6/answers/33
+{
+    "response": "You Sent a DELETE request for /answers",
+    
+     "questionId": "6",
+    
+     "answerId": "33",
+    
+     "body": {
+        "prop": "value",
+        "clean": "abc"
+    }
+
+}
+
+TEST 4
+localhost:3000/questions/6/answers/33/vote-up
+body raw json
+{
+	"prop":"value",
+	 "clean":"abc"
+}
+Result:
+{
+    "response": "You Sent a POST request for /vote-up",
+    
+     "questionId": "6",
+    
+     "answerId": "33",
+    
+     "vote": "up"
+
+}
+vote down also works

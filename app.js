@@ -4,8 +4,9 @@ var app=express();
 var routes=require('./routes');
 
 var jsonParser= require('body-parser').json;
+var logger = require('morgan');
 
-
+app.use(logger('dev'));
 //when app recieve a request this middleware will
 //the body. make it accessable from the request body property
 app.use(jsonParser());
