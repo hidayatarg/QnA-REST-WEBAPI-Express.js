@@ -1,0 +1,39 @@
+Building API
+-Creating a question
+-Read the question
+-Answer a question
+-Read the answer
+-Edit an answer
+-Delete an answer
+-Vote on answer
+
+
+Planing:
+two object 
+Question<<<<<<<<<>>>>>>>>Answer
+Create			Create
+Read 			Read
+			Delete
+			Vote
+
+
+
+
+Planning Routes: (for Questions)
+GET	- 	/questions      (No answer if no questions)
+POST	- 	/questions 
+GET	- 	/questions/:id	(Specific question with id)
+
+
+*API answers belong to questions (Parent-Child-Relationships)
+POST	-	/questions/:id/answer
+GET	-	/questions/:id/answer/:id
+PUT	-	/questions/:id/answer/:id
+DELETE	-	/questions/:id/answer/:id
+
+
+Vote route 
+-Vote Up	POST - /questions/:qID/answers/:aID/vote-up
+-Vote Down	POST - /questions/:qID/answers/aID/vote-down
+
+
