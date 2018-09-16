@@ -1,0 +1,22 @@
+{
+  "name": "tree.desinging-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/hidayatarg/qna-rest-webapi-express.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/hidayatarg/qna-rest-webapi-express/issues"
+  },
+  "homepage": "https://gitlab.com/hidayatarg/qna-rest-webapi-express#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
