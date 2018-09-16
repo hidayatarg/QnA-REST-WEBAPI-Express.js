@@ -40,3 +40,80 @@ Vote route
 #npm init --yes
 #npm i express@~4.13 --save
 Setup the express App
+
+NOTE:
+An Express application is similar to a conveyor belt 
+receiving requests at one end, and sending responses from the other.
+middleware function
+app.use(function(req, res, next){});
+next(); function mustbe called once the work is finished (next)
+*If next is never called the response cycle will never finish.
+
+
+
+```
+'use strict';
+var express=require('express');
+var app=express();
+
+app.use( function (req, res, next){
+	consol.log('first middleware');
+	next();
+});
+
+app.use('/different/:id',function (req, res, next){
+	consol.log('Second middle ware, ID:', req.params.id);
+	next();
+});
+
+var port=process.env.PORT || 3000;
+
+app.listen(port,function(){
+    console.log('Express server is listening on port:', port);
+});
+```
+
+
+```
+'use strict';
+var express=require('express');
+var app=express();
+
+app.use( function (req, res, next){
+	req.myMessage="Hello, Middleware #"
+	next();
+});
+
+app.use(function (req, res, next){
+	consol.log(req.myMessage);
+	next();
+});
+
+var port=process.env.PORT || 3000;
+
+app.listen(port,function(){
+    console.log('Express server is listening on port:', port);
+});
+```
+
+Express access to query strings
+```
+'use strict';
+var express=require('express');
+var app=express();
+
+
+app.use(function (req, res, next){
+	console.log('The leave on trees are', req.query.color);
+	next();
+});
+
+var port=process.env.PORT || 3000;
+
+app.listen(port,function(){
+    console.log('Express server is listening on port:', port);
+});
+```
+
+We need a request of (localhost:3000/?color=green) fire the upper code
+URL parameters are available within middleware: req.params
