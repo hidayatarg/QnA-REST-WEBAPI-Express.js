@@ -117,3 +117,46 @@ app.listen(port,function(){
 
 We need a request of (localhost:3000/?color=green) fire the upper code
 URL parameters are available within middleware: req.params
+
+
+
+#install Body Parser a middleware already written
+#npm i --save body-parser@~1.15
+
+The first middleware cannot access to the request body property
+```
+'use strict';
+var express=require('express');
+var app=express();
+var jsonParser= require('body-parser').json;
+
+app.use(function (req, res, next) {
+    if(req.body){
+        console.log('The Sky is', req.body.color);
+    }else{
+        console.log('There is no body property on the request');
+    }
+    next();
+});
+
+//when app recieve a request this middleware will
+//the body. make it accessable from the request body property
+app.use(jsonParser());
+
+app.use(function (req, res, next) {
+    if (req.body) {
+        console.log('The Sky is', req.body.color);
+    } else {
+        console.log('There is no body property on the request');
+    }
+    next();
+});
+
+var port=process.env.PORT || 3000;
+
+app.listen(port,function(){
+    console.log('Express server is listening on port:', port);
+});
+```
+
+Refactor the code
