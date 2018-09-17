@@ -2,17 +2,32 @@
 
 var express = require('express');
 var router = express.Router();
+var Question= require('./models/models').Question;
 
 //GET /questions
 //Function route handler
 //Return all the questions
-router.get('/', function(req, res){
-    res.json({response:"You sent a GET request"});
+// Projection  // Descending order
+router.get('/', function(req, res, next){
+    Question.find({})
+                .sort( {createdAt:-1})
+                .exec (function(err, questions){
+                        if(err) return next(err);
+                        res.json(questions);
+                });
 });
 
 //POST /questions
 //Route for creating questions
-router.post('/', function(req, res){
+router.post('/', function(req, res, next){
+    var question= new Question(req.body);
+    question.save(function(err, question){
+        if(err) return next(err);
+        err.status(201);
+        //return document as json to client
+        res.json(question);
+    });
+
     res.json({
         response:"You sent a POST request",
         body: req.body
@@ -21,9 +36,11 @@ router.post('/', function(req, res){
 
 //GET /questions/:id
 //Route for specific questions
-router.get('/:id', function(req, res){
-    res.json({
-        response:"You Sent a GET request for ID" + req.params.id
+router.get('/:id', function(req, res, next){
+    Question.findById(req.params.qID, function(err, doc){
+        if(err) return next(err);
+        res.json(doc);
+
     });
 });
 
