@@ -243,3 +243,11 @@ we recieved
         "message": "Not Found"
     }
 }
+
+
+localhost:3000/questions/44/answer/8/vote-garpefruit
+{
+    "error": {
+        "message": "Not Found"
+    }
+}
