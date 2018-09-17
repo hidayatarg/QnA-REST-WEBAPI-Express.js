@@ -233,3 +233,13 @@ Result:
 
 }
 vote down also works
+
+
+Error Handler
+PUT-localhost:3000/questions
+we recieved
+{
+    "error": {
+        "message": "Not Found"
+    }
+}
