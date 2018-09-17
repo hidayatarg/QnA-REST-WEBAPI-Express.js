@@ -251,3 +251,13 @@ localhost:3000/questions/44/answer/8/vote-garpefruit
         "message": "Not Found"
     }
 }
+
+
+What entities are we tracking?
+#magoose
+Make mango a relation database
+SCHEMA DATA TYPES string, number, date, boolean
+MongoDB parent child relationship
+
+#npm install --save mongoose@~4.4
+node mongoose_sandbox.js
