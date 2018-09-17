@@ -106,26 +106,26 @@ router.delete('/:qID/answers/:aID', function(req, res){
 //POST /questions//:qID/answers/:aID/vote-up
 //POST /questions//:qID/answers/:aID/vote-down
 //Route for vote a specific answer
-router.post('/:qID/answers/:aID/vote-:dir', function (req, res, next){
-    if (req.body.params.dir.search(/^(up|down)$/)===-1){
-        var err= new Error("Not Found");
-        err.status=404;
-        next(err);
-    }else{
-        // If contents are valid
-        next();
-    }
+router.post('/:qID/answers/:aID/vote-:dir', 
+    function (req, res, next){
+        if (req.body.params.dir.search(/^(up|down)$/)===-1){
+            var err= new Error("Not Found");
+            err.status=404;
+            next(err);
+        }else{
+            // If contents are valid
+            req.vote = req.params.dir;
+            next();
+        }
 
 },
 
 function(req, res) {
-    
-    res.json({
-        response: "You Sent a POST request for /vote-"+req.params.dir,
-        questionId: req.params.qID,
-        answerId: req.params.aID,
-        vote: req.params.dir
-    });
+    req.answer.vote(req.vote, function(err, question){
+        if(err) return next(err);
+        res.json(question);
+    })
+   
 });
 
 module.exports = router;
