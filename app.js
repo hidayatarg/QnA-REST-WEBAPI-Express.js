@@ -11,6 +11,22 @@ app.use(logger('dev'));
 //the body. make it accessable from the request body property
 app.use(jsonParser());
 
+
+var mongoose = require('mongoose');
+mongoose.connect("mongodb://localhost:27017/qa");
+
+var db = mongoose.connection;
+// Error handler
+db.on('error', function (err) {
+    console.error('connection error: ', err);
+});
+
+// Connection is ready to listen
+// Occur the first time
+db.once('open', function () {
+    console.log('db connection successful');
+});
+
 // Push to Questions
 app.use('/questions',routes);
 
